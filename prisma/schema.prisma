@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model youtube_chanels {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique @db.Char(255)
+  description String   @db.Char(255)
+  link        String   @db.Char(255)
+  subscribers Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
